@@ -98,3 +98,25 @@ h3 {
     border-left-color: #d35400;
     background-color: #f5e6d2;
 }
+
+.project-content {
+    max-width: 800px;
+}
+
+.project-meta {
+    color: #8b7355;
+    font-style: italic;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #d3b8a0;
+}
+
+.project-content h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.project-content p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
