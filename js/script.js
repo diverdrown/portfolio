@@ -1,8 +1,8 @@
-const headerPath = '/components/header.html';
-const galleryPath = '/components/gallery.html';
-const skillsPath = '/components/skills.html';
-const skillsGridPath = '/components/skill-grid.html';
-const aboutPath = '/components/about.html';
+const headerPath = 'components/header.html';
+const galleryPath = 'components/gallery.html';
+const skillsPath = 'components/skills.html';
+const skillsGridPath = 'components/skill-grid.html';
+const aboutPath = 'components/about.html';
 
 // Fetching content
 fetch(headerPath)
