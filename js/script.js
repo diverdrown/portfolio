@@ -232,11 +232,18 @@ function initializeSkills() {
     }
 }
 
-// Theme Manager
 class ThemeManager {
     constructor() {
-        this.theme = this.getStoredTheme() || 'light';
+        this.theme = this.getStoredTheme() || this.getSystemPreference();
+        this.isAnimating = false;
         this.init();
+    }
+
+    getSystemPreference() {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
     }
 
     getStoredTheme() {
@@ -254,37 +261,78 @@ class ThemeManager {
     }
 
     init() {
-        this.applyTheme(this.theme);
+        this.applyTheme(this.theme, false);
         this.setupEventListeners();
     }
 
-    applyTheme(theme) {
+    applyTheme(theme, animate = true) {
+        const button = document.getElementById('terminal-toggle');
+        const textSpan = button?.querySelector('.terminal-text');
+        
         if (theme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         } else {
             document.documentElement.removeAttribute('data-theme');
         }
+        
         this.theme = theme;
         this.setStoredTheme(theme);
-        this.updateActiveButton();
+        
+        if (!animate && textSpan) {
+            textSpan.textContent = theme === 'dark' ? 'GO LIGHT...' : 'GO DARK...';
+        }
     }
 
     setupEventListeners() {
-        const themeButtons = document.querySelectorAll('.theme-option');
-        themeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.applyTheme(button.dataset.theme);
-            });
-        });
+        const button = document.getElementById('terminal-toggle');
+        if (button) {
+            button.addEventListener('click', () => this.toggle());
+        }
     }
 
-    updateActiveButton() {
-        const themeButtons = document.querySelectorAll('.theme-option');
-        themeButtons.forEach(button => {
-            button.classList.toggle('active', button.dataset.theme === this.theme);
-        });
+    async toggle() {
+        if (this.isAnimating) return;
+        
+        const button = document.getElementById('terminal-toggle');
+        const cursor = button.querySelector('.terminal-cursor');
+        const textSpan = button.querySelector('.terminal-text');
+        
+        if (!button || !cursor || !textSpan) return;
+        
+        this.isAnimating = true;
+        button.classList.add('animating');
+        
+        const newTheme = this.theme === 'dark' ? 'light' : 'dark';
+        const oldText = this.theme === 'dark' ? 'GO LIGHT...' : 'GO DARK...';
+        const newText = newTheme === 'dark' ? 'GO LIGHT...' : 'GO DARK...';
+        
+        await this.animateTyping(cursor, textSpan, oldText, newText);
+        
+        this.applyTheme(newTheme, false);
+        
+        button.classList.remove('animating');
+        this.isAnimating = false;
+    }
+
+    async animateTyping(cursor, textSpan, oldText, newText) {
+        const charDelay = 40;
+        
+        for (let i = oldText.length; i >= 0; i--) {
+            textSpan.textContent = oldText.substring(0, i);
+            await this.sleep(charDelay);
+        }
+        
+        for (let i = 0; i <= newText.length; i++) {
+            textSpan.textContent = newText.substring(0, i);
+            await this.sleep(charDelay);
+        }
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
+
 
 function initializeMobileMenu() {
     if (!document.getElementById('menuToggle')) return;
