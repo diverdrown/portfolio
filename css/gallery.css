@@ -20,6 +20,11 @@
     overflow: hidden;
 }
 
+[data-theme="dark"] .project-titlebar {
+    background: var(--energy-bright);
+    color:#000;
+}
+
 .project-titlebar {
     background: var(--energy-bright);
     color: #000;
@@ -108,8 +113,8 @@
 }
 
 .tag {
-    background: var(--energy-bright);
-    color: #000;
+    background: #000;
+    color: var(--energy-bright);
     padding: 6px 14px;
     font-size: 0.85rem;
     font-weight: 700;
@@ -125,8 +130,8 @@
 }
 
 .project-link {
-    color: #000;
-    background: var(--energy-bright);
+    color: var(--energy-bright);
+    background: #000;
     text-decoration: none;
     font-weight: 900;
     padding: 12px 24px;
@@ -202,12 +207,12 @@
 }
 
 .nav-button {
-    background: var(--energy-bright);
+    background: #000;
     border: 4px solid #000;
     padding: 14px 24px;
     cursor: pointer;
     font-size: 1rem;
-    color: #000;
+    color: var(--energy-bright);
     font-family: inherit;
     font-weight: 900;
     min-width: 140px;

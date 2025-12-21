@@ -1,5 +1,10 @@
-// Load header into all pages
-const headerPath = window.location.pathname.includes('/projects/') ? '../header.html' : 'header.html';
+const headerPath = '/components/header.html';
+const galleryPath = '/components/gallery.html';
+const skillsPath = '/components/skills.html';
+const skillsGridPath = '/components/skill-grid.html';
+const aboutPath = '/components/about.html';
+
+// Fetching content
 fetch(headerPath)
     .then(response => response.text())
     .then(data => {
@@ -7,15 +12,12 @@ fetch(headerPath)
         new ThemeManager();
     });
 
-const galleryPath = 'gallery.html';
 fetch(galleryPath)
     .then(response => response.text())
     .then(data => {
         document.getElementById('project-gallery-placeholder').innerHTML = data;
         initializeGallery();
     });
-const skillsPath = 'skills.html';
-const skillsGridPath = 'skill-grid.html';
 
 fetch(skillsPath)
     .then(response => response.text())
@@ -31,14 +33,21 @@ fetch(skillsGridPath)
         initializeSkills();
     });
 
+fetch(aboutPath)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('about-placeholder').innerHTML = data;
+    });
+
+
 // Project Gallery System
 function initializeGallery() {
     const projects = [
         {
             title: "In The Light",
             subtitle: "Solo Developer • Unreal Engine 5",
-            description: "In The Light is a first person mystery adventure game that takes place in Northern California's forests. Traverse the forest, find video cassettes, and find acceptance atop the top of a hill. Utilizing experimental homemade audio cut from my own home videos, ITL is a brief 5-to-10 minute experiment in telling the tale of coming to terms with losing a family member. This is my MFA thesis project built over the span of 9 months.",
-            tags: ["Unreal Engine 5", "Level Design", "First-Person", "Horror", "Narrative Design"],
+            description: "In The Light is a first person adventure game that takes place in Northern California's forests. Explore a forgotten home, find video cassettes, and learn to find peace despite pain. Utilizing experimental homemade audio cut from my own home videos, ITL is a brief 5-to-10 minute experiment in telling the tale of coming to terms with losing a family member. This is my MFA thesis project built over the span of 9 months.",
+            tags: ["Unreal Engine 5", "Level Design", "First-Person", "Narrative Design"],
             status: "completed",
             images: [
                 "https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMC5wbmc=/original/EnRfIj.png",
@@ -63,7 +72,7 @@ function initializeGallery() {
         {
             title: "Sunrise City",
             subtitle: "Systems Designer, Playtest Coordinator • Tabletop",
-            description: "A cooperative board game where 4-6 players work as city aldermen to combat climate change by 2030. Players balance investing in UN Sustainable Development Goals while protecting their city from disasters. Led systems design and coordinated playtesting sessions to refine game balance and player engagement.",
+            description: "A cooperative board game where 4-6 players work as city aldermen to combat climate change by 2030. Players balance investing in their city infrastucture with trying to afford succeeding in their own personal goals. Led systems design and coordinated playtesting sessions to refine game balance and player engagement.",
             tags: ["Systems Design", "Tabletop", "Co-op", "Educational"],
             status: "completed",
             images: [
