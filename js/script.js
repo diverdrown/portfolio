@@ -197,14 +197,12 @@ function initializeGallery() {
             }
         });
 
-        // Initialize gallery
         updateDisplay();
     }
 }
 
 
 function initializeSkills() {
-    // Skills Filter System
     if (document.querySelector('.filter-btn')) {
         const filterButtons = document.querySelectorAll('.filter-btn');
         const skillCards = document.querySelectorAll('.skill-card');
@@ -213,11 +211,9 @@ function initializeSkills() {
             btn.addEventListener('click', function() {
                 const filter = this.dataset.filter;
                 
-                // Update active button
                 filterButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Filter cards
                 skillCards.forEach(card => {
                     const category = card.dataset.category;
                     
