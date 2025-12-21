@@ -1,4 +1,6 @@
-const headerPath = 'components/header.html';
+const headerPath = window.location.pathname.includes('/pages/') 
+    ? '../components/header.html' 
+    : 'components/header.html';
 const galleryPath = 'components/gallery.html';
 const skillsPath = 'components/skills.html';
 const skillsGridPath = 'components/skill-grid.html';
@@ -10,6 +12,7 @@ fetch(headerPath)
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
         new ThemeManager();
+        initializeMobileMenu();
     });
 
 fetch(galleryPath)
@@ -281,4 +284,66 @@ class ThemeManager {
             button.classList.toggle('active', button.dataset.theme === this.theme);
         });
     }
+}
+
+function initializeMobileMenu() {
+    if (!document.getElementById('menuToggle')) return;
+    
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const menuClose = document.getElementById('menuClose');
+    const overlayLinks = document.querySelectorAll('.overlay-menu-links a');
+
+    menuToggle.addEventListener('click', () => {
+        overlayMenu.classList.add('visible');
+    });
+
+    menuClose.addEventListener('click', () => {
+        overlayMenu.classList.remove('visible');
+    });
+
+    overlayMenu.addEventListener('click', (e) => {
+        if (e.target === overlayMenu) {
+            overlayMenu.classList.remove('visible');
+        }
+    });
+
+    overlayLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            overlayMenu.classList.remove('visible');
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlayMenu.classList.contains('visible')) {
+            overlayMenu.classList.remove('visible');
+        }
+    });
+}
+
+// Projects Page Filter
+if (document.getElementById('projects-grid')) {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            
+            // Update active button
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter cards
+            projectCards.forEach(card => {
+                const category = card.dataset.category;
+                
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 }

@@ -1,8 +1,4 @@
-/* ========================================
-   PROJECT GALLERY STYLES
-   ======================================== */
 
-/* Gallery Container */
 .gallery-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -12,7 +8,6 @@
     align-items: start;
 }
 
-/* Project Display Window */
 .project-display {
     background: var(--surface-color);
     border: 4px solid #000;
@@ -250,7 +245,6 @@
     letter-spacing: 2px;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .gallery-container {
         grid-template-columns: 1fr;
