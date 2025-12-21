@@ -4,6 +4,7 @@ fetch(headerPath)
     .then(response => response.text())
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
+        new ThemeManager();
     });
 
 const galleryPath = 'gallery.html';
@@ -12,6 +13,22 @@ fetch(galleryPath)
     .then(data => {
         document.getElementById('project-gallery-placeholder').innerHTML = data;
         initializeGallery();
+    });
+const skillsPath = 'skills.html';
+const skillsGridPath = 'skill-grid.html';
+
+fetch(skillsPath)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('skills-placeholder').innerHTML = data;
+        
+    });
+
+fetch(skillsGridPath)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('skills-grid-placeholder').innerHTML = data;
+        initializeSkills();
     });
 
 // Project Gallery System
@@ -170,5 +187,89 @@ function initializeGallery() {
 
         // Initialize gallery
         updateDisplay();
+    }
+}
+
+
+function initializeSkills() {
+    // Skills Filter System
+    if (document.querySelector('.filter-btn')) {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const skillCards = document.querySelectorAll('.skill-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                // Update active button
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter cards
+                skillCards.forEach(card => {
+                    const category = card.dataset.category;
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    }
+}
+
+// Theme Manager
+class ThemeManager {
+    constructor() {
+        this.theme = this.getStoredTheme() || 'light';
+        this.init();
+    }
+
+    getStoredTheme() {
+        try {
+            return localStorage.getItem('theme');
+        } catch (e) {
+            return null;
+        }
+    }
+
+    setStoredTheme(theme) {
+        try {
+            localStorage.setItem('theme', theme);
+        } catch (e) {}
+    }
+
+    init() {
+        this.applyTheme(this.theme);
+        this.setupEventListeners();
+    }
+
+    applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        this.theme = theme;
+        this.setStoredTheme(theme);
+        this.updateActiveButton();
+    }
+
+    setupEventListeners() {
+        const themeButtons = document.querySelectorAll('.theme-option');
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.applyTheme(button.dataset.theme);
+            });
+        });
+    }
+
+    updateActiveButton() {
+        const themeButtons = document.querySelectorAll('.theme-option');
+        themeButtons.forEach(button => {
+            button.classList.toggle('active', button.dataset.theme === this.theme);
+        });
     }
 }
