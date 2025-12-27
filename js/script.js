@@ -15,6 +15,7 @@ fetch(headerPath)
     .then(response => response.text())
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
+        new ThemeManager();
         initializeMobileMenu();
     });
 
@@ -61,7 +62,6 @@ fetch(aboutPath)
 
 document.addEventListener('DOMContentLoaded', () => {
     new TableOfContents();
-    new ThemeManager();
 });
 
 function initializeGallery() {
