@@ -1,0 +1,212 @@
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   1. CONSISTENT BUTTON PRESS PATTERN
+   ======================================== */
+
+.cta-button {
+    transition: all 0.15s ease;
+}
+
+.cta-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-sm) var(--black);
+    background: var(--black);
+    color: var(--energy-bright);
+}
+
+.cta-button:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 var(--black);
+}
+
+.filter-btn,
+.nav-button,
+.social-link,
+.footer-link,
+.project-link {
+    transition: all 0.15s ease;
+}
+
+.filter-btn:hover,
+.nav-button:hover:not(:disabled),
+.social-link:hover,
+.footer-link:hover,
+.project-link:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--black);
+    background: var(--energy-bright);
+    color: var(--black);
+}
+
+.filter-btn:active,
+.nav-button:active:not(:disabled),
+.social-link:active,
+.footer-link:active,
+.project-link:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--black);
+}
+
+.nav-links a,
+.overlay-menu-links a {
+    transition: all 0.15s ease;
+}
+
+.nav-links a:hover,
+.overlay-menu-links a:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--black);
+    background: var(--energy-bright);
+    color: var(--black);
+}
+
+.nav-links a:active,
+.overlay-menu-links a:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--black);
+}
+
+.menu-toggle {
+    transition: all 0.15s ease;
+}
+
+.menu-toggle:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--black);
+    background: var(--energy-bright);
+    color: var(--black);
+}
+
+.menu-toggle:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--black);
+}
+
+.overlay-menu-close {
+    transition: all 0.15s ease;
+}
+
+.overlay-menu-close:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--black);
+    background: var(--energy-bright);
+    color: var(--black);
+}
+
+.overlay-menu-close:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--black);
+}
+
+/* ========================================
+   2. UNIVERSAL WINDOW LIFT
+   ======================================== */
+
+.brutal-window,
+.project-display,
+.profile-card,
+.bio-card,
+.quick-facts,
+.skill-card,
+.project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brutal-window:hover,
+.project-display:hover,
+.profile-card:hover,
+.bio-card:hover,
+.quick-facts:hover,
+.skill-card:hover,
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg) var(--black);
+}
+
+.skill-card:active,
+.project-card:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm) var(--black);
+}
+
+/* ========================================
+   3. WINDOW BUTTON INTERACTIONS
+   ======================================== */
+
+.window-btn {
+    transition: all 0.1s ease;
+    position: relative;
+}
+
+.window-btn:active {
+    transform: scale(0.9);
+    filter: brightness(0.95);
+}
+
+/* ========================================
+   4. THUMBNAIL INTERACTIONS
+   ======================================== */
+
+.thumbnail {
+    transition: all 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--black);
+}
+
+.thumbnail.active {
+    border-color: var(--energy-bright);
+    box-shadow: var(--shadow-sm) var(--energy-bright);
+}
+
+.thumbnail.active:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--energy-bright);
+}
+
+/* ========================================
+   5. TERMINAL TOGGLE
+   ======================================== */
+
+.terminal-toggle {
+    transition: all 0.15s ease;
+}
+
+.terminal-toggle:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+.terminal-toggle:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 #000;
+}
+
+.terminal-toggle.animating .terminal-text {
+    text-shadow: 0 0 8px var(--terminal-green),
+                 0 0 12px var(--terminal-green);
+}
+
+.tag,
+.meta-tag,
+.status-badge {
+    transition: all 0.15s ease;
+    cursor: default;
+}
+
+.tag:hover,
+.meta-tag:hover,
+.status-badge:hover {
+    transform: scale(1.05);
+}

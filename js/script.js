@@ -1,4 +1,6 @@
-const headerPath = window.location.pathname.includes('/pages/') 
+// Check if we're in any subdirectory
+const isSubdirectory = window.location.pathname.match(/\/(pages|projects)\//);
+const headerPath = isSubdirectory 
     ? '../components/header.html' 
     : 'components/header.html';
 const galleryPath = 'components/gallery.html';
@@ -6,12 +8,13 @@ const skillsPath = 'components/skills.html';
 const skillsGridPath = 'components/skill-grid.html';
 const aboutPath = 'components/about.html';
 
+const skillsPlaceholder = document.getElementById('skills-placeholder');
+
 // Fetching content
 fetch(headerPath)
     .then(response => response.text())
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
-        new ThemeManager();
         initializeMobileMenu();
     });
 
@@ -22,19 +25,33 @@ fetch(galleryPath)
         initializeGallery();
     });
 
-fetch(skillsPath)
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('skills-placeholder').innerHTML = data;
-        
-    });
-
-fetch(skillsGridPath)
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('skills-grid-placeholder').innerHTML = data;
-        initializeSkills();
-    });
+if (skillsPlaceholder) {
+    fetch(skillsPath)
+        .then(response => response.text())
+        .then(data => {
+            skillsPlaceholder.innerHTML = data;
+            
+            return new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        resolve();
+                    });
+                });
+            });
+        })
+        .then(() => fetch(skillsGridPath))
+        .then(response => response.text())
+        .then(data => {
+            const gridPlaceholder = document.getElementById('skills-grid-placeholder');
+            if (gridPlaceholder) {
+                gridPlaceholder.innerHTML = data;
+                initializeSkills();
+            }
+        })
+        .catch(error => {
+            console.error('Skills loading error:', error);
+        });
+}
 
 fetch(aboutPath)
     .then(response => response.text())
@@ -42,8 +59,11 @@ fetch(aboutPath)
         document.getElementById('about-placeholder').innerHTML = data;
     });
 
+document.addEventListener('DOMContentLoaded', () => {
+    new TableOfContents();
+    new ThemeManager();
+});
 
-// Project Gallery System
 function initializeGallery() {
     const projects = [
         {
@@ -87,7 +107,6 @@ function initializeGallery() {
         }
     ];
 
-    // Only initialize gallery if the elements exist on the page
     if (document.getElementById('project-image')) {
         let currentIndex = 0;
         let currentImageIndex = 0;
@@ -364,8 +383,6 @@ function initializeMobileMenu() {
         }
     });
 }
-
-// Projects Page Filter
 if (document.getElementById('projects-grid')) {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -374,11 +391,9 @@ if (document.getElementById('projects-grid')) {
         btn.addEventListener('click', function() {
             const filter = this.dataset.filter;
             
-            // Update active button
             filterButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter cards
             projectCards.forEach(card => {
                 const category = card.dataset.category;
                 
@@ -391,3 +406,116 @@ if (document.getElementById('projects-grid')) {
         });
     });
 }
+
+class TableOfContents {
+    constructor() {
+        this.content = document.getElementById('project-content');
+        this.tocList = document.getElementById('toc-list');
+        this.tocToggle = document.getElementById('toc-toggle');
+        this.tocSidebar = document.querySelector('.toc-sidebar');
+        
+        if (!this.content || !this.tocList) return;
+        
+        this.headings = [];
+        this.init();
+    }
+
+    init() {
+        this.generateTOC();
+        this.setupScrollTracking();
+        this.setupMobileToggle();
+    }
+
+    generateTOC() {
+        const headings = this.content.querySelectorAll('h2, h3');
+        
+        headings.forEach((heading, index) => {
+            if (!heading.id) {
+                heading.id = this.createSlug(heading.textContent);
+            }
+
+            this.headings.push(heading);
+
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            
+            link.href = `#${heading.id}`;
+            link.textContent = heading.textContent;
+            link.dataset.index = index;
+            
+            if (heading.tagName === 'H3') {
+                link.classList.add('toc-h3');
+            }
+            
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                heading.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                history.pushState(null, null, `#${heading.id}`);
+                
+                if (window.innerWidth <= 900) {
+                    this.tocSidebar.classList.remove('open');
+                }
+            });
+            
+            li.appendChild(link);
+            this.tocList.appendChild(li);
+        });
+    }
+
+    createSlug(text) {
+        return text
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/--+/g, '-')
+            .trim();
+    }
+
+    setupScrollTracking() {
+        const observerOptions = {
+            threshold: 0,
+            rootMargin: '-100px 0px -66%'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.id;
+                const link = this.tocList.querySelector(`a[href="#${id}"]`);
+                
+                if (entry.isIntersecting && link) {
+                    this.tocList.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        this.headings.forEach(heading => observer.observe(heading));
+    }
+
+    setupMobileToggle() {
+        if (!this.tocToggle) return;
+
+        this.tocToggle.addEventListener('click', () => {
+            this.tocSidebar.classList.toggle('open');
+            
+            if (this.tocSidebar.classList.contains('open')) {
+                this.tocToggle.textContent = '▲';
+            } else {
+                this.tocToggle.textContent = '▼';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900 && 
+                this.tocSidebar.classList.contains('open') &&
+                !this.tocSidebar.contains(e.target)) {
+                this.tocSidebar.classList.remove('open');
+                this.tocToggle.textContent = '▼';
+            }
+        });
+    }
+}
+
