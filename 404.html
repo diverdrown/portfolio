@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/micro.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero">
+            <div class="section-content animated">
+                <div class="brutal-window">
+                    <div class="window-titlebar">
+                        <span class="window-title">ERROR_404.EXE</span>
+                        <div class="window-controls">
+                            <button class="window-btn minimize">_</button>
+                            <button class="window-btn maximize">□</button>
+                            <button class="window-btn close">X</button>
+                        </div>
+                    </div>
+                    <div class="window-content">
+                        <h1 style="font-size: clamp(3rem, 8vw, 6rem); margin-bottom: var(--space-3);">404</h1>
+                        <p class="subtitle">Page Not Found</p>
+                        <p class="intro">
+                            Looks like you've wandered into uncharted territory. This page doesn't exist—yet. 
+                            Maybe it's still in development, or maybe the link is broken.
+                        </p>
+                        
+                        <a href="index.html" class="cta-button">← Return Home</a>
+                        
+                        <div class="social-links" style="margin-top: var(--space-5);">
+                            <a href="index.html#projects" class="social-link">
+                                <span>View Projects</span>
+                            </a>
+                            <a href="pages/projects.html" class="social-link">
+                                <span>All Projects</span>
+                            </a>
+                            <a href="index.html#about" class="social-link">
+                                <span>About</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Terminal-style error details -->
+                <div class="brutal-window" style="margin-top: var(--space-6); max-width: 600px;">
+                    <div class="window-titlebar">
+                        <span class="window-title">error_log.txt</span>
+                        <div class="window-controls">
+                            <button class="window-btn minimize">_</button>
+                            <button class="window-btn maximize">□</button>
+                            <button class="window-btn close">X</button>
+                        </div>
+                    </div>
+                    <div class="window-content" style="text-align: left; background: #1a1a1a; color: #00ff80; font-size: 0.9rem; padding: var(--space-4);">
+                        <p style="margin-bottom: var(--space-2); color: #00ff80;">$ cat error.log</p>
+                        <p style="margin-bottom: var(--space-2); color: #aaa;">
+                            [ERROR] 404: Resource not found<br>
+                            [INFO] Requested path does not exist<br>
+                            [SUGGESTION] Check URL or return to home
+                        </p>
+                        <p style="color: #00ff80;">$ █</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

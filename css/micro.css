@@ -193,11 +193,6 @@
     box-shadow: 0 0 0 #000;
 }
 
-.terminal-toggle.animating .terminal-text {
-    text-shadow: 0 0 8px var(--terminal-green),
-                 0 0 12px var(--terminal-green);
-}
-
 .tag,
 .meta-tag,
 .status-badge {

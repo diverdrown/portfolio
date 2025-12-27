@@ -234,11 +234,13 @@
         .window-btn.minimize {
             background: #FFD700;
             color: var(--black);
+            padding-bottom: var(--space-2);
         }
 
         .window-btn.maximize {
             background: #00FF00;
             color: var(--black);
+            padding-bottom: var(--space-2);
         }
 
         .window-btn.close {
