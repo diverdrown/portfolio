@@ -10,11 +10,29 @@ const aboutPath = 'components/about.html';
 
 const skillsPlaceholder = document.getElementById('skills-placeholder');
 
+function fixNavigationLinks() {
+    const isSubdirectory = window.location.pathname.match(/\/(pages|projects)\//);
+    
+    document.querySelectorAll('.nav-links a, .overlay-menu-links a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#') || href.startsWith('http')) return;
+        
+        if (isSubdirectory) {
+            if (href === 'index.html' || href.startsWith('index.html#')) {
+                link.setAttribute('href', '../' + href);
+            }
+            else if (href.startsWith('pages/')) {
+                link.setAttribute('href', href.replace('pages/', ''));
+            }
+        }
+    });
+}
 // Fetching content
 fetch(headerPath)
     .then(response => response.text())
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
+        fixNavigationLinks();
         new ThemeManager();
         initializeMobileMenu();
     });
