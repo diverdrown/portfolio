@@ -24,7 +24,10 @@ function fixNavigationLinks() {
             else if (href.startsWith('pages/')) {
                 link.setAttribute('href', href.replace('pages/', ''));
             }
-        }
+            else if(href.startsWith('projects/')) {
+                link.setAttribute('href', href.replace('projects/', ''));
+            }
+        } 
     });
 }
 // Fetching content
