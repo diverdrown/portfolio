@@ -22,18 +22,25 @@
                     <button class="filter-btn" data-filter="games">Games</button>
                     <button class="filter-btn" data-filter="tools">Tools</button>
                     <button class="filter-btn" data-filter="tabletop">Tabletop</button>
+
+                    <select class="filter-dropdown" id="year-filter">
+                        <option value="all">All Years</option>
+                    </select>
                 </div>
 
                 <div class="projects-grid" id="projects-grid">
-                    <a href="../projects/InTheLight.html" class="project-card" data-category="games">
+
+                    <a href="../projects/InTheLight.html" class="project-card" data-category="games"
+                    data-year="2025">
                         <div class="card-titlebar">
                             <span>IN_THE_LIGHT.EXE</span>
                         </div>
                         <div class="card-image">
-                            <img src="../images/ugly stinky guy.png" alt="In The Light">
+                            <img src="../images/ITLHeader.png" alt="In The Light">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">In The Light</h3>
+                            <p class="card-status">Completed</p>
                             <div class="card-tags">
                                 <span class="meta-tag">Level Design</span>
                                 <span class="meta-tag">Horror</span>
@@ -42,6 +49,167 @@
                             </div>
                         </div>
                     </a>
+
+                    <a href="../projects/ShaderMuseum.html" class="project-card" data-category="games tools"
+                    data-year="2020">
+                        <div class="card-titlebar">
+                            <span>SHADER_MUSEUM.EXE</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/ShaderMuseum.png" alt="Shader Museum">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Shader Museum</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">ShaderGraph</span>
+                                <span class="meta-tag">Unity</span>
+                                <span class="meta-tag">C#</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/ShaderExperiments.html" class="project-card" data-category="tools"
+                    data-year="2025">
+                        <div class="card-titlebar">
+                            <span>SHADER_EXPERIMENTS.TXT</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/Burning Stars.png" alt="Shader Experiments">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Shader Experiments</h3>
+                            <p class="card-status">In Progress</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">HLSL/GLSL</span>
+                                <span class="meta-tag">Material Nodes</span>
+                                <span class="meta-tag">Shadertoy</span>
+                                <span class="meta-tag">Unreal Engine 5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/SunriseCity.html" class="project-card" data-category="tabletop"
+                    data-year="2024">
+                        <div class="card-titlebar">
+                            <span>SUNRISE_CITY.TXT</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/SunriseCity.png" alt="Sunrise City">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Sunrise City</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">Systems Design</span>
+                                <span class="meta-tag">Politics</span>
+                                <span class="meta-tag">Social Impact Games</span>
+                                <span class="meta-tag">Roleplaying</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/Sightseer.html" class="project-card" data-category="games"
+                    data-year="2023">
+                        <div class="card-titlebar">
+                            <span>SIGHTSEER.EXE</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/Sightseer.png" alt="SIGHTSEER">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">SIGHTSEER</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">Exploration</span>
+                                <span class="meta-tag">Unreal Engine 5</span>
+                                <span class="meta-tag">Chaos Destruction</span>
+                                <span class="meta-tag">Material Nodes</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/HeavenlyBodies.html" class="project-card" data-category="games"
+                    data-year="2022">
+                        <div class="card-titlebar">
+                            <span>HEAVENLY_BODIES.EXE</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/HeavenlyBodies.png" alt="Heavenly Bodies">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Heavenly Bodies</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">Level Design</span>
+                                <span class="meta-tag">Animation</span>
+                                <span class="meta-tag">Narrative Design</span>
+                                <span class="meta-tag">Unity</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/SoundscapesAndAtmospheres.html" class="project-card" data-category="games"
+                    data-year="2021">
+                        <div class="card-titlebar">
+                            <span>SOUNDSCAPES.EXE</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/SAA.png" alt="Soundscapes and Atmospheres">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Soundscapes and Atmospheres</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">Art History</span>
+                                <span class="meta-tag">Unity</span>
+                                <span class="meta-tag">Research</span>
+                                <span class="meta-tag">Narrative Design</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/FamilyMuseum.html" class="project-card" data-category="games"
+                    data-year="2020">
+                        <div class="card-titlebar">
+                            <span>FAMILY_MUSEUM.EXE</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/FamilyMuseum.png" alt="Family Museum">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Family Museum</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">Exploration</span>
+                                <span class="meta-tag">Unity</span>
+                                <span class="meta-tag">Horror</span>
+                                <span class="meta-tag">Atmospheric Design</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../projects/BurningStars.html" class="project-card" data-category="games"
+                    data-year="2020">
+                        <div class="card-titlebar">
+                            <span>BURNING_STARS.EXE</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="../images/Burning Stars.png" alt="Burning Stars">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Burning Stars</h3>
+                            <p class="card-status">Completed</p>
+                            <div class="card-tags">
+                                <span class="meta-tag">Text Game</span>
+                                <span class="meta-tag">Unity</span>
+                                <span class="meta-tag">Horror</span>
+                                <span class="meta-tag">Narrative Design</span>
+                            </div>
+                        </div>
+                    </a>
+
+
                 </div>
             </div>
         </section>

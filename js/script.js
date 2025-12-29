@@ -11,23 +11,37 @@ const aboutPath = 'components/about.html';
 const skillsPlaceholder = document.getElementById('skills-placeholder');
 
 function fixNavigationLinks() {
-    const isSubdirectory = window.location.pathname.match(/\/(pages|projects)\//);
+    const isInPages = window.location.pathname.includes('/pages/');
+    const isInProjects = window.location.pathname.includes('/projects/');
     
-    document.querySelectorAll('.nav-links a, .overlay-menu-links a').forEach(link => {
+    const links = document.querySelectorAll('.nav-links a, .overlay-menu-links a');
+    
+    // Safety check - if no links found, exit early
+    if (!links || links.length === 0) return;
+    
+    links.forEach(link => {
         const href = link.getAttribute('href');
-        if (href.startsWith('#') || href.startsWith('http')) return;
         
-        if (isSubdirectory) {
+        // Skip hash links and external links
+        if (!href || href.startsWith('#') || href.startsWith('http')) return;
+        
+        // From /pages/ or /projects/ directories
+        if (isInPages || isInProjects) {
+            // Links to index.html need to go up one level
             if (href === 'index.html' || href.startsWith('index.html#')) {
                 link.setAttribute('href', '../' + href);
             }
+            // Links to pages/ directory
             else if (href.startsWith('pages/')) {
-                link.setAttribute('href', href.replace('pages/', ''));
+                if (isInPages) {
+                    // Already in /pages/, just remove the 'pages/' prefix
+                    link.setAttribute('href', href.replace('pages/', ''));
+                } else {
+                    // In /projects/, need to go ../pages/
+                    link.setAttribute('href', '../' + href);
+                }
             }
-            else if(href.startsWith('projects/')) {
-                link.setAttribute('href', href.replace('projects/', ''));
-            }
-        } 
+        }
     });
 }
 // Fetching content
@@ -406,26 +420,67 @@ function initializeMobileMenu() {
 }
 if (document.getElementById('projects-grid')) {
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const yearFilter = document.getElementById('year-filter');
     const projectCards = document.querySelectorAll('.project-card');
-
+    
+    let activeCategory = 'all';
+    let activeYear = 'all';
+    
+    // Populate year dropdown from project data
+    function populateYearFilter() {
+        const years = new Set();
+        
+        projectCards.forEach(card => {
+            const year = card.dataset.year;
+            if (year) {
+                years.add(year);
+            }
+        });
+        
+        // Convert to array, sort descending (newest first)
+        const sortedYears = Array.from(years).sort((a, b) => b - a);
+        
+        // Add options to dropdown
+        sortedYears.forEach(year => {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearFilter.appendChild(option);
+        });
+    }
+    
+    function filterProjects() {
+        projectCards.forEach(card => {
+            const categories = card.dataset.category.split(' ');
+            const year = card.dataset.year;
+            
+            const matchesCategory = activeCategory === 'all' || categories.includes(activeCategory);
+            const matchesYear = activeYear === 'all' || year === activeYear;
+            
+            if (matchesCategory && matchesYear) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
     filterButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            const filter = this.dataset.filter;
-            
+            activeCategory = this.dataset.filter;
             filterButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            
-            projectCards.forEach(card => {
-                const category = card.dataset.category;
-                
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            filterProjects();
         });
     });
+    
+    yearFilter.addEventListener('change', function() {
+        activeYear = this.value;
+        filterProjects();
+    });
+    
+    // Initialize
+    populateYearFilter();
 }
 
 class TableOfContents {
