@@ -108,9 +108,9 @@ function initializeGallery() {
             tags: ["Unreal Engine 5", "Level Design", "First-Person", "Narrative Design"],
             status: "completed",
             images: [
-                "../images/ITLOne.png",
-                "../images/ITLTwo.png",
-                "../images/ITLThree.png"
+                "images/ITLOne.png",
+                "images/ITLTwo.png",
+                "images/ITLThree.png"
             ],
             plink: "https://betaversions.itch.io/itl",
             link: "../projects/InTheLight.html"
@@ -122,9 +122,9 @@ function initializeGallery() {
             tags: ["Unity", "Shaders", "Tech Art", "Tools", "Low-poly", "ShaderGraph"],
             status: "completed",
             images: [
-                "../images/SMSquare.gif",
-                "../images/SMTwo.gif",
-                "../images/SMThree.gif"
+                "images/SMSquare.gif",
+                "images/SMTwo.gif",
+                "images/SMThree.gif"
             ],
             plink: "https://betaversions.itch.io/shaders-m",
             link: "../projects/ShaderMuseum.html"
