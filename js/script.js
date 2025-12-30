@@ -108,37 +108,39 @@ function initializeGallery() {
             tags: ["Unreal Engine 5", "Level Design", "First-Person", "Narrative Design"],
             status: "completed",
             images: [
-                "https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMC5wbmc=/original/EnRfIj.png",
-                "https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMi5wbmc=/original/W%2BIwMd.png",
-                "https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMy5wbmc=/original/AQmNZv.png"
+                "../images/ITLOne.png",
+                "../images/ITLTwo.png",
+                "../images/ITLThree.png"
             ],
-            link: "https://betaversions.itch.io/itl"
+            plink: "https://betaversions.itch.io/itl",
+            link: "../projects/InTheLight.html"
         },
         {
             title: "Shader Museum",
             subtitle: "Solo Developer • Unity",
-            description: "A Unity shader pack featuring five custom shaders: water, transparent outlines, silhouettes, stylized outlines, and grass. My first deep dive into shader programming, this project demonstrates technical art skills through interactive, explorable examples. Built in Unity using URP.",
-            tags: ["Unity", "Shaders", "Tech Art", "Tools", "Low-poly"],
+            description: "A Unity shader pack featuring five custom shaders: water, transparent outlines, silhouettes, stylized outlines, and grass. This was my first deep dive into shader programming. It also features a level to walk around and see the shaders in! Built in Unity using URP.",
+            tags: ["Unity", "Shaders", "Tech Art", "Tools", "Low-poly", "ShaderGraph"],
             status: "completed",
             images: [
-                "https://img.itch.zone/aW1nLzYxNTcwNTEuZ2lm/original/WHhIwL.gif",
-                "https://img.itch.zone/aW1nLzYxNTcwNzQuZ2lm/original/vV7Smn.gif",
-                "https://img.itch.zone/aW1nLzYxNTcwOTAuZ2lm/original/awVPu0.gif"
+                "../images/SMSquare.gif",
+                "../images/SMTwo.gif",
+                "../images/SMThree.gif"
             ],
-            link: "https://betaversions.itch.io/shaders-m"
+            plink: "https://betaversions.itch.io/shaders-m",
+            link: "../projects/ShaderMuseum.html"
         },
         {
             title: "Sunrise City",
             subtitle: "Systems Designer, Playtest Coordinator • Tabletop",
-            description: "A cooperative board game where 4-6 players work as city aldermen to combat climate change by 2030. Players balance investing in their city infrastucture with trying to afford succeeding in their own personal goals. Led systems design and coordinated playtesting sessions to refine game balance and player engagement.",
-            tags: ["Systems Design", "Tabletop", "Co-op", "Educational"],
+            description: "A cooperative board game where 4-6 players work together as city aldermen to combat climate change by 2030. Players balance investing in their city infrastucture with trying to afford succeeding in their own personal goals. I was on systems design and coordinated playtesting sessions to refine game balance and player engagement.",
+            tags: ["Systems Design", "Tabletop", "Co-op", "Social Impact Games", "Politics"],
             status: "completed",
             images: [
-                "https://img.itch.zone/aW1nLzEyMDc3MjEwLmpwZw==/original/vnFZJB.jpg",
-                "https://img.itch.zone/aW1nLzEyMDc3MjEyLmpwZw==/original/22%2BYYI.jpg",
-                "https://img.itch.zone/aW1nLzEyMzk4NzI0LnBuZw==/original/aAXZrp.png"
+                "../images/SCOne.jpg",
+                "../images/SCTwo.jpg"
             ],
-            link: "https://lvwatson.itch.io/sunrise"
+            plink: "https://lvwatson.itch.io/sunrise",
+            link: "../projects/SunriseCity.html"
         }
     ];
 
@@ -214,7 +216,10 @@ function initializeGallery() {
                 ).join('');
                 
                 const linksContainer = document.getElementById('project-links');
-                linksContainer.innerHTML = `<a href="${project.link}" class="project-link" target="_blank">View on Itch →</a>`;
+                linksContainer.innerHTML = `
+    ${project.plink ? `<a href="${project.plink}" class="project-link" target="_blank">View on Itch →</a>` : ''}
+    ${project.link ? `<a href="${project.link}" class="project-link" target="_blank">Read Writeup →</a>` : ''}
+`;
                 
                 img.style.opacity = '1';
             }, 150);
