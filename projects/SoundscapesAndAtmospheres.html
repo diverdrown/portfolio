@@ -3,122 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In The Light - Z Sarkissian</title>
+    <title>Blog - Z Sarkissian</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/project-detail.css">
     <link rel="stylesheet" href="../css/micro.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <main class="project-layout">
-        <aside class="toc-sidebar">
-            <div class="toc-titlebar">
-                <span>CONTENTS</span>
-                <button class="toc-toggle" id="toc-toggle" aria-label="Toggle table of contents">▼</button>
+    <main>
+        <section class="hero">
+            <div class="section-content animated">
+                <div class="brutal-window">
+                    <div class="window-titlebar">
+                        <span class="window-title">PAGE_CONSTRUCTION.EXE</span>
+                        <div class="window-controls">
+                            <button class="window-btn minimize">_</button>
+                            <button class="window-btn maximize">□</button>
+                            <button class="window-btn close">X</button>
+                        </div>
+                    </div>
+                    <div class="window-content">
+                        <h1 style="font-size: clamp(2rem, 6vw, 4rem);">Under Construction</h1>
+                        <p class="subtitle">Building something cool here</p>
+                        <p class="intro">
+                            This page is currently in development. Check back soon.
+                        </p>
+                        <a href="../index.html" class="cta-button">← Back to Home</a>
+                        
+                        <div class="social-links" style="margin-top: var(--space-5);">
+                            <a href="../index.html#projects" class="social-link">
+                                <span>View Projects</span>
+                            </a>
+                            <a href="../index.html#about" class="social-link">
+                                <span>About Me</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <nav class="toc-content" id="toc-content">
-                <ul class="toc-list" id="toc-list">
-                </ul>
-            </nav>
-        </aside>
-
-        <article class="project-article" id="project-content">
-            <header class="project-header">
-                <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMC5wbmc=/original/EnRfIj.png" 
-                     alt="In The Light" 
-                     class="project-hero-image">
-                <h1>In The Light</h1>
-                <p class="project-meta">Solo Developer • Unreal Engine 5 • MFA Thesis Project</p>
-                <div class="project-tags">
-                    <span class="tag">Unreal Engine 5</span>
-                    <span class="tag">Level Design</span>
-                    <span class="tag">First-Person</span>
-                    <span class="tag">Narrative Design</span>
-                    <span class="tag">Environmental Storytelling</span>
-                </div>
-            </header>
-
-            <section>
-                <h2>Summary</h2>
-                <p>In The Light is a first-person adventure game set in Northern California's forests. Players explore a forgotten home, discover video cassettes, and learn to find peace despite pain. This experimental project utilizes homemade audio cut from my own home videos to create an intimate 5-to-10 minute experience about coming to terms with losing a family member.</p>
-                
-                <p>This was my MFA thesis project, built over 9 months as a solo developer in Unreal Engine 5. The game explores how digital spaces can serve as containers for physical memories and emotional processing.</p>
-
-                <div class="project-links">
-                    <a href="https://betaversions.itch.io/itl" class="project-detail-link" target="_blank">
-                        <span>🎮</span> Play on Itch.io
-                    </a>
-                    <a href="#" class="project-detail-link">
-                        <span>📄</span> Read Thesis Paper
-                    </a>
-                </div>
-            </section>
-
-
-            <section>
-                <h2>Details</h2>
-                
-                <h3>Design Goals</h3>
-                <p>The primary goal of In The Light was to explore how games can function as digital collections of physical material. By incorporating actual home video audio into the game's soundscape, I aimed to create a deeply personal experience that blurs the line between memory and play.</p>
-                
-                <ul>
-                    <li>Create an intimate, emotionally resonant experience using personal audio materials</li>
-                    <li>Design environmental storytelling that reveals narrative through exploration</li>
-                    <li>Build a contemplative pace that respects the weight of the subject matter</li>
-                    <li>Utilize lighting and atmosphere to convey emotional states</li>
-                </ul>
-
-                <h3>Technical Implementation</h3>
-                <p>Built entirely in Unreal Engine 5, In The Light leverages UE5's lighting capabilities to create atmospheric environments that shift between hope and melancholy. The level design guides players through a nonlinear exploration of memory, with each discovered cassette revealing another layer of the story.</p>
-
-                <p>Key technical elements include:</p>
-                <ul>
-                    <li>Custom Blueprint systems for cassette collection and playback</li>
-                    <li>Dynamic lighting setups that respond to player progression</li>
-                    <li>Audio implementation using personal home video recordings</li>
-                    <li>Environmental design focused on Northern California forests</li>
-                </ul>
-
-                <h3>Development Timeline</h3>
-                <p>The project was developed over 9 months as a solo effort, encompassing all aspects of game development including level design, programming, audio design, and narrative structure. The compressed timeline required careful scope management while maintaining the emotional integrity of the experience.</p>
-            </section>
-
-            <section>
-                <h2>Gallery</h2>
-                <div class="inline-gallery">
-                    <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMC5wbmc=/original/EnRfIj.png" alt="In The Light Screenshot 1">
-                    <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMi5wbmc=/original/W%2BIwMd.png" alt="In The Light Screenshot 2">
-                    <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMy5wbmc=/original/AQmNZv.png" alt="In The Light Screenshot 3">
-                </div>
-            </section>
-
-            <section>
-                <h2>Reflection</h2>
-                <p>Creating In The Light was both technically challenging and emotionally demanding. Working with personal audio materials required balancing artistic expression with emotional vulnerability. The project taught me valuable lessons about scope management, the power of environmental storytelling, and how games can serve as vehicles for processing complex emotions.</p>
-
-                <p>The experience solidified my interest in games that prioritize emotional resonance and personal expression over traditional gameplay mechanics. It also demonstrated how constraints (in this case, time and being a solo developer) can drive creative solutions and focused design.</p>
-            </section>
-
-            <section>
-                <h2>Technical Challenges</h2>
-                
-                <h3>Audio Integration</h3>
-                <p>Integrating home video audio into Unreal Engine's audio system required custom solutions to maintain audio quality while ensuring seamless playback triggered by player actions. The challenge was making decades-old VHS audio feel intentional rather than simply low-quality.</p>
-
-                <h3>Performance Optimization</h3>
-                <p>Balancing UE5's advanced lighting features with playable performance required careful optimization. The forest environment needed to feel dense and atmospheric while maintaining stable frame rates across different hardware configurations.</p>
-            </section>
-
-            <div class="project-links" style="margin-top: var(--space-7); padding-top: var(--space-5); border-top: var(--border-medium) solid var(--black);">
-                <a href="../pages/projects.html" class="project-detail-link">
-                    <span>←</span> Back to All Projects
-                </a>
-            </div>
-        </article>
+        </section>
     </main>
 
     <script src="../js/script.js"></script>
 </body>
-</html>
