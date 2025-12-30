@@ -136,8 +136,8 @@ function initializeGallery() {
             tags: ["Systems Design", "Tabletop", "Co-op", "Social Impact Games", "Politics"],
             status: "completed",
             images: [
-                "../images/SCOne.jpg",
-                "../images/SCTwo.jpg"
+                "images/SCOne.jpg",
+                "images/SCTwo.jpg"
             ],
             plink: "https://lvwatson.itch.io/sunrise",
             link: "../projects/SunriseCity.html"
