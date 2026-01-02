@@ -26,13 +26,12 @@
 
         <article class="project-article" id="project-content">
             <header class="project-header">
-                <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMC5wbmc=/original/EnRfIj.png" 
+                <img src="../images/ITLHeader.png" 
                      alt="In The Light" 
                      class="project-hero-image">
                 <h1>In The Light</h1>
                 <p class="project-meta">Solo Developer • Unreal Engine 5 • MFA Thesis Project</p>
                 <div class="project-tags">
-                    <span class="tag">Unreal Engine 5</span>
                     <span class="tag">Level Design</span>
                     <span class="tag">First-Person</span>
                     <span class="tag">Narrative Design</span>
@@ -42,15 +41,20 @@
 
             <section>
                 <h2>Summary</h2>
-                <p>In The Light is a first-person adventure game set in Northern California's forests. Players explore a forgotten home, discover video cassettes, and learn to find peace despite pain. This experimental project utilizes homemade audio cut from my own home videos to create an intimate 5-to-10 minute experience about coming to terms with losing a family member.</p>
+                <p>In The Light is a first-person adventure game set in Northern California's forests. Players are guided through a personal 
+                    experience of dealing with life's later waves of grief while exploring a forgotten home and discovering audio cassettes that unlock new memories.
+                     This experimental project utilizes homemade audio cut from my own home videos to create an intimate 5-to-10 minute experience 
+                     about coming to terms with losing a family member.</p>
                 
-                <p>This was my MFA thesis project, built over 9 months as a solo developer in Unreal Engine 5. The game explores how digital spaces can serve as containers for physical memories and emotional processing.</p>
+                <p>This was my MFA thesis, built over 9 months as a solo developer in Unreal Engine 5. 
+                    The game explores how digital spaces can serve as containers for physical memories and emotional processing. Further, it explores how
+                memory can be warped by the experience of grieving.</p>
 
                 <div class="project-links">
                     <a href="https://betaversions.itch.io/itl" class="project-detail-link" target="_blank">
                         <span>🎮</span> Play on Itch.io
                     </a>
-                    <a href="#" class="project-detail-link">
+                    <a href="https://via.library.depaul.edu/cdm_etd/66/" class="project-detail-link">
                         <span>📄</span> Read Thesis Paper
                     </a>
                 </div>
@@ -61,36 +65,169 @@
                 <h2>Details</h2>
                 
                 <h3>Design Goals</h3>
-                <p>The primary goal of In The Light was to explore how games can function as digital collections of physical material. By incorporating actual home video audio into the game's soundscape, I aimed to create a deeply personal experience that blurs the line between memory and play.</p>
+                <p>The primary goal of In The Light was to explore how grief and time change our memories of our departed loved ones. 
+                    By incorporating actual audio cut from my family's personal home videos into the game's soundscape,
+                     I aimed to create a deeply personal experience that blurred the line between a space to play and a space to reflect.</p>
                 
+                     I additionally sought to:
                 <ul>
-                    <li>Create an intimate, emotionally resonant experience using personal audio materials</li>
-                    <li>Design environmental storytelling that reveals narrative through exploration</li>
-                    <li>Build a contemplative pace that respects the weight of the subject matter</li>
-                    <li>Utilize lighting and atmosphere to convey emotional states</li>
+                    <li>Create an intimate, emotionally resonant experience</li>
+                    <li>Learn to design environmental storytelling that revealed narrative through exploration</li>
+                    <li>Utilize lighting, post-processing effects, and game mechanics to convey emotional states and narrative beats</li>
+                    <li>Learn the full process of making a game, from ideation to publication</li>
                 </ul>
 
                 <h3>Technical Implementation</h3>
-                <p>Built entirely in Unreal Engine 5, In The Light leverages UE5's lighting capabilities to create atmospheric environments that shift between hope and melancholy. The level design guides players through a nonlinear exploration of memory, with each discovered cassette revealing another layer of the story.</p>
+                    <h4>Engine Selection</h4>
+                        <p>One of the key aspects of building In The Light was the engine: Unreal Engine 5. I selected UE5 in part because I wanted to explore the engine's toolsets and 
+                            make use of its powerful lighting capabilities and expansive material editor to create my game's atmospheric environments.
+                            Additionally, the engine's level design tools were a boon to iterative game design, allowing me to continually sculpt, build, and re-build 
+                            the world until it accurately captured the game's dreamy, unreal rendition of the Lassen National Forest area. Using UE5 also meant I could make 
+                            use of tools like the Brushify plugin to enhance my vision for the game's world.</p>
 
-                <p>Key technical elements include:</p>
-                <ul>
-                    <li>Custom Blueprint systems for cassette collection and playback</li>
-                    <li>Dynamic lighting setups that respond to player progression</li>
-                    <li>Audio implementation using personal home video recordings</li>
-                    <li>Environmental design focused on Northern California forests</li>
-                </ul>
+                        <p>The last reason for choosing UE5 was blueprints: I knew I was not a strong programmer early on in the game's ideation stage. Blueprints 
+                            were a fantastic way for me to accessibly learn game programming logic and patterns on my own terms, and were easy enough to edit that I 
+                            could quickly iterate on my mechanical design concepts.</p>
+                
+                    <h4>Core Technical Systems</h4>
+                        <ul>
+                            <li><p>Custom Blueprint systems for item interaction, dialogue, portals, and audio playback:</p></li>
+                                <p>I wanted players to be able to interact with the world and dialogue without requiring too many different
+                                    keybinds. I solved this issue using Blueprint interfaces to handle the cross-talk between blueprints
+                                    and was able to make sure that, in situations like overlap checks crossing with interactables and portals
+                                    at the same time, certain types of interaction were given priority over others. Additionally,
+                                    I was able to use blueprints to streamline interactions, like auto-opening doors, so that players could
+                                    easily navigate without having to remember too many buttons to press in a game that was too short to memorize
+                                    a variety of keybinds.
+                                </p>
+                            <li><p>Dynamic Lumen-based lighting setups and post-processing materials that respond to player progression via level and event triggers:</p></li>
+                            <p>I knew that I wanted a core focus of the game to be its art and atmosphere. Unreal's post-processing system immediately solved
+                                a number of problems for me: it's both powerful and flexible, and I was able to use it to dynamically swap post-processing effects
+                                in realtime without it effecting performance. Lumen GI also allowed me to create dramatic, powerful lighting setups, and 
+                                gave me the freedom to explore staging lighting in the world without having to re-bake lighting at regular intervals. This sped up
+                                my iteration process for designing the game's atmosphere a considerable amount.
+                            </p>
+                            <li><p>Audio mixing and customization using Unreal's Audio Mixer system:</p></li>
+                                <p>Since audio was crucial to how my game helped the player navigate the space and the feel of the world itself,
+                                    I needed a solution for designing that soundspace. I considered tools like FMOD, but I felt Unreal's 
+                                    built in audio systems (sound cues, sound classes, and mixes) were already very strong and easy to use.
+                                    They were a great, built-in solution that allowed me to play sound triggers, create custom mixes of
+                                    my audio samples, and fade in/out audio as needed depending on the player's location.
+                                </p>
+                            <li><p>Environmental design built with Unreal's terrain tools and Brushify:</p></li>
+                            <p>One of my learning focuses was on building a realistically scaled environment: I wanted the world to feel
+                                like an actual place that the player could walk around in in real life. The terrain tool in Unreal was 
+                                flexible enough through tools like components that I could play around with a variety of terrain layouts 
+                                and come to understand scaling in level design. Additional tooling like the Brushify plugin, runtime
+                                virtual textures for placing objects like roads, and Unreal's foliage system were also incredibly helpful.
+                                They really enabled me to build out the forested space and have it feel like an old valley nestled by trees.
+                            </p>
+                        </ul>
+
+                    <h4>Additional UE Tools</h4>
+                        <ul>
+                            <li>Unreal UI Widgets: Since my game needed to tell a story with text, I learned how to build a styled UI with UMG--and
+                                even learned to animate it!</li>
+                            <li>Unreal's profiling tools: My game made use of a number of post-process effects and Lumen, so I had to learn how to
+                                use, read, and respond to information from tools like Unreal's view modes, GPU profiling, and Insights.
+                            </li>
+                        </ul>
+
+                    <h4>Development Pipeline</h4>
+                        <ul>
+                            <li>Reaper and DaVinci Resolve for audio extraction/processing</li>
+                            <li>Blender for building prototype assets</li>
+                            <li>Diversion for version control</li>
+                        </ul>
 
                 <h3>Development Timeline</h3>
-                <p>The project was developed over 9 months as a solo effort, encompassing all aspects of game development including level design, programming, audio design, and narrative structure. The compressed timeline required careful scope management while maintaining the emotional integrity of the experience.</p>
+                <p>The project was developed over 9 months as a largely solo effort, encompassing all aspects of game development including production, level design, programming, audio design, and narrative structure. 
+                    The compressed timeline required careful scope management to execute the project's vision while maintaining its emotional integrity.</p>
+                    <h4>Ideation</h4>
+                        <p>My MFA thesis process was broken into 3 quarters of work, from spring 2024 to winter 2025, with a summer break between two phases--the first of which was our incubation studio class.
+                        During this time, I was free to explore any concept I wanted, with a guided work structure surrounding ideation to help find a direction for the eventual
+                    pitch. I decided early on to handle classwork as devlogs, which can be read <a href="https://asmr3d.tumblr.com">here</a>. Though I didn't maintain writing devlogs
+                    after the quarter was over, it was an incredibly helpful effort, and operated as an archive of ideas and works that I could reflect back on easily and share with
+                    people I wanted to receive critique from.</p>
+                        <p>I came into the class with a notion of what I wanted to explore. I'd always wanted to make a piece of art that commemorated my father. I explored
+                            a couple key ideas related to this concept as I worked during the quarter: objects as vessels for memories
+                            and spatial design as a methodology for telling a story. I also spent a bit of time in UE5 testing out its lighting and level design tools to evaluate
+                            its fit for my project. Below are some images from that phase that integral to the eventual game design document I wrote.</p>
+                            <div class="full-width-gallery">
+                            <img src="../images/ITLPhaseOneImage.png" alt="In The Light Ideation Image One">
+                            <span>This is a screenshot from the first ever build I made for ITL. I was mostly trying to learn how to use the lighting tools
+                                and object controls at this point. I found the mood lighting pretty evocative and fixated on learning to design game lighting for the entire project's 
+                                development after this build.
+                            </span>
+                            <img src="../images/ITLSecondImage.png" alt="In The Light Ideation Image Two">
+                            <span>This was the first concept piece I made for the game, which I made around the time I began to write the GDD. I really wanted to capture 
+                                the idea of being lost in a forest surrounded by the dilapidated remains of the people who once lived there.
+                            </span>
+                            </div>
+                    <h4>Prototyping</h4>
+                        <p>Early into the prototyping phase in late spring, I knew the scope for my game could quickly get out of hand. As I was beginning to poke around UE5 and 
+                            test some of the concepts I was developing, a creeping feeling entered my mind: I knew I'd eventually need a custom asset for the house my game was going
+                            to take place in, and I am not a 3D modeler, nor did I have time to learn to be one. There were a couple options. When it was time to start
+                            adding a little bit of level art,I could use pre-made assets and modify materials to make the home feel close to what I wanted it to be. 
+                            I didn't <i>really</i> want to do that, because I knew that the result would not fully capture the specific design and aesthetic I had in mind. 
+                            The other option was making use of the fact that my project still had a lot of time to develop, so I could still find an artist to create the model for me.</p>
+                        <p>I went with the latter option, and worked with one of my thesis advisors to bring on fellow masters students <a href="https://www.linkedin.com/in/rebecca-benson-6a1272a7/">
+                            Becca Benson</a> and <a href="https://www.linkedin.com/in/shikha-patel-668287214">Shikha Patel</a> to help with my modeling needs.
+                            The both of them were incredibly helpful for the rest of the project: they gave me feedback on art ideas, pushed me to think about new possibilities
+                            for my thesis, and, of course, assisted me in getting the final house model made.</p>
+                        <p>Aside from using this stage to find people to assist with my work, I began to sort out what, exactly, my game would <i>do</i>. 
+                        At this point, I had a pretty vague description of my game's core mechanic. It was mildly inspired by Tyler Glaiel's 2012 puzzle game <i>Closure</i>,
+                        and involved the idea of using light to "reveal" unseen spaces in the game world. This was reworked into a more complete vision: my game would feature portals as a system for traversal
+                        and storytelling. This captured what I was looking for--I had been trying to find something that would mechanically represent going back and forth across the liminal
+                        barrier between reality and memory. Portals presented a perfect fit as they are, at their essence, a transitional doorway between unexpected
+                        places. I (for the first time!) sat down and played Portal for research, built paper prototypes for puzzle concepts, 
+                        and started iterating on what the space for the game would feel like.</p>
+                        <div class="full-width-gallery">
+                            <img src="../images/ITLPortal.png" alt="In The Light Prototyping: My first portal">
+                            <span>This is a screenshot from my first time trying to build portals in UE5. I was very proud of getting the visual functionality to work.
+                            </span>
+                            <img src="../images/ITLHouseInternal.png" alt="In The Light Prototyping: Learning to level design">
+                            <span>This is from a later point in prototyping. I'd done a lot of scrappy, quickly tossed out renditions of box-shaped houses.
+                                Late in the summer, I'd drawn enough concept art and level maps (for my artists) that I could build a much stronger, fully-envisioned playtest 
+                                environment for the game's central house.
+                            </span>
+                            </div>
+                    <h4>Playtesting</h4>
+                    <p>Playtesting mostly occurred over fall quarter in 2024. By this time, I had a relatively fully developed portal system--with some bugs that 
+                        ended up forcing me to change how the whole system worked--and a version of the whole level space. I did not have the narrative written, and 
+                        I'd pretty severely neglected UI up to this point. The playtesting phase involved juggling several tasks behind the scenes while 
+                        presenting the game to others: resolving the portal bugs, figuring out how exactly to convey the narrative I'd put together, 
+                        and figuring out how to design a UI that wasn't absolutely terrible.
+                    </p>
+                    <p>I playtested the narrative and game aesthetics through a presentation to a playtesting course my university runs. I ran through what exactly 
+                        I was trying to do and showed the game and its art. They were wonderful at picking apart the holes in my concept, and gave me a stronger 
+                        idea of how I wanted to approach the idea of telling a story that spanned multiple time periods. I allowed people to play what I had in a few 
+                        smaller, not-strictly-playtesting scenarios, and took their relative confusion about what they needed to do as a sign that my game was mechanically unclear. 
+                        I had my chair hand out a build of my game to one of his classes focused on playtesting UI (once I'd put it together), with a google form people could respond to.
+                        I did not get a lot of responses. However, it was still worthwhile time spent, as it made it very easy to show people who I knew were knowledgeable about UI/UX and 
+                        have them help me figure out where my UI needed to improve.
+                    </p>
+                    <p>This was probably one of the hardest phases to deal with as a solo developer, especially with the 10 week limitation a quarter imposes upon you. I just could not 
+                        achieve everything I wanted to within that amount of time. A lot of ideas got cut, and I had to painfully realize I'd still managed to overscope my idea despite my 
+                        best attempts to self-produce. This realization came at one of the worst possible times, as well: I was scheduled to have my game shown at the Midwest Game Developer's Conference 
+                        as part of DePaul's booth, and, about a week beforehand, I knew I had an unplayable build from all of the taping together I was doing to respond to playtests. I swallowed my pride, 
+                        threw out everything that was unnecessary to prioritize getting a build together, and did my absolute best to resolve the frame rate issue that had slowly seeped 
+                        into my game's structure over the playtesting phase.
+                    </p>
+                    <p>After a week of bleary-eyed crunching, I had something that I would lovingly describe as "doing its best". The Midwest GDC showcase (and essentially playtest) was 
+                        my favorite of them all. Getting to see strangers choose to sit down and play something I'd made at a game show for the first time was magical. I learned so much 
+                        from my conversations, and the warm response bolstered my confidence. 
+                    </p>
+                    <h4>Polish and Defense</h4>
+                
             </section>
 
             <section>
                 <h2>Gallery</h2>
                 <div class="inline-gallery">
-                    <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMC5wbmc=/original/EnRfIj.png" alt="In The Light Screenshot 1">
-                    <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMi5wbmc=/original/W%2BIwMd.png" alt="In The Light Screenshot 2">
-                    <img src="https://img.itch.zone/aW1hZ2UvMzM4MDA3OS8yMDI1MjgzMy5wbmc=/original/AQmNZv.png" alt="In The Light Screenshot 3">
+                    <img src="../images/ITLOne.png" alt="In The Light Screenshot 1">
+                    <img src="../images/ITLTwo.png" alt="In The Light Screenshot 2">
+                    <img src="../images/ITLThree.png" alt="In The Light Screenshot 3">
                 </div>
             </section>
 

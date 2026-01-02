@@ -95,8 +95,8 @@
     font-size: 0.9rem;
     font-family: inherit;
     color: var(--energy-bright);
-    appearance: none; /* removes default arrow */
-    padding-right: var(--space-5); /* space for custom arrow */
+    appearance: none;
+    padding-right: var(--space-5);
 }
 
 .filter-dropdown:focus {
